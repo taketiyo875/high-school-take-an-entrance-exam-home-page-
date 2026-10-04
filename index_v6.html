@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>受験情報ポータル</title>
+<meta name="description" content="受験に役立つコラム、受験体験記、勉強会、カウントダウンをまとめたポータル">
+
+<style>
+:root{
+  --blue:#4e6686;
+  --deep:#2f4866;
+  --pale:#eef4f9;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP","Yu Gothic",sans-serif;
+  color:#263b54;
+  background:var(--blue);
+}
+a{text-decoration:none;color:inherit}
+
+header{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:#ffffffdd;
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid #ffffff88;
+}
+.header-inner{
+  max-width:1100px;margin:auto;padding:14px 20px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.logo{font-weight:900;letter-spacing:.05em}
+.header-note{font-size:10px;letter-spacing:.16em;opacity:.55}
+
+.hero{
+  min-height:100vh;
+  padding:115px 20px 70px;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  background:
+    radial-gradient(circle at 50% 20%,#ffffff28,transparent 35%),
+    linear-gradient(145deg,#597394,#405a79);
+}
+.hero-content{max-width:800px}
+.eyebrow{
+  display:inline-block;padding:8px 14px;border-radius:999px;
+  background:#ffffff22;color:#fff;border:1px solid #ffffff66;
+  font-size:10px;letter-spacing:.18em;font-weight:800;
+}
+h1{
+  margin:28px 0 20px;
+  color:#fff;
+  font-size:clamp(38px,9vw,72px);
+  line-height:1.08;
+  letter-spacing:-.04em;
+}
+h1 .line{display:block;white-space:nowrap}
+.hero-copy{color:#ffffffdd;line-height:1.9;font-size:15px}
+
+/* スクロール強調 */
+.scroll-wrap{margin-top:42px;display:flex;justify-content:center}
+.scroll-cta{
+  position:relative;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  min-width:min(330px,88vw);
+  padding:18px 26px 20px;
+  color:#29415e;
+  background:#fff;
+  border:4px solid #fff;
+  border-radius:28px;
+  box-shadow:0 16px 45px #172b443f,0 0 0 7px #ffffff35;
+  animation:ctaPulse 1.35s ease-in-out infinite;
+}
+.scroll-cta::before{
+  content:"";
+  position:absolute;inset:-11px;
+  border:3px solid #ffffffaa;border-radius:36px;
+  animation:ring 1.7s ease-out infinite;
+}
+.scroll-main{
+  font-size:clamp(23px,6vw,32px);
+  font-weight:1000;
+  line-height:1.15;
+}
+.scroll-sub{font-size:10px;letter-spacing:.22em;opacity:.62;font-weight:800}
+.scroll-arrow{
+  font-size:38px;font-weight:900;line-height:.75;
+  animation:arrow 0.7s ease-in-out infinite;
+}
+@keyframes ctaPulse{
+  50%{transform:translateY(7px) scale(1.04);box-shadow:0 23px 52px #172b4455,0 0 0 10px #ffffff20}
+}
+@keyframes arrow{50%{transform:translateY(8px)}}
+@keyframes ring{0%{transform:scale(.94);opacity:.9}100%{transform:scale(1.08);opacity:0}}
+
+.contents{
+  background:var(--pale);
+  padding:85px 20px 100px;
+}
+.contents-inner{max-width:1000px;margin:auto}
+.section-heading{text-align:center;margin-bottom:38px}
+.section-label{font-size:11px;letter-spacing:.2em;font-weight:900;opacity:.5}
+.section-heading h2{font-size:clamp(25px,6vw,38px);margin:10px 0}
+.section-heading p{margin:0;opacity:.65}
+
+.cards{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;
+}
+.card{
+  background:#fff;border-radius:26px;padding:28px;
+  box-shadow:0 12px 35px #29415e16;
+  border:1px solid #dce6ef;
+}
+.card-icon{font-size:34px}
+.card h3{font-size:25px;margin:12px 0 8px}
+.card p{line-height:1.8;opacity:.72;min-height:72px}
+.card-button{
+  display:block;text-align:center;margin-top:20px;
+  padding:14px 18px;border-radius:16px;
+  background:var(--deep);color:#fff;font-weight:900;
+  box-shadow:0 8px 18px #29415e26;
+  transition:.2s;
+}
+.card-button:active{transform:scale(.98)}
+
+.community{
+  margin-top:55px;
+}
+.community-title{text-align:center;margin-bottom:22px}
+.community-title h2{margin:8px 0;font-size:28px}
+.community-title p{opacity:.65}
+.community-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.community-card{
+  position:relative;
+  display:flex;flex-direction:column;
+  background:#fff;border:1px solid #dce6ef;
+  border-radius:22px;padding:22px;
+  box-shadow:0 10px 28px #29415e12;
+}
+.community-card h3{font-size:17px;margin:4px 0 9px}
+.community-card p{font-size:13px;line-height:1.65;opacity:.68;flex:1}
+.chat-button{
+  margin-top:15px;padding:12px;border-radius:14px;
+  background:#526d8d;color:#fff;text-align:center;font-weight:900;
+}
+.university::before{
+  content:"高校生はこちらも‼️";
+  position:absolute;top:-12px;left:16px;
+  background:#f5c84b;color:#3d3317;
+  padding:5px 10px;border-radius:999px;
+  font-size:11px;font-weight:1000;
+  box-shadow:0 5px 15px #9d7b2133;
+}
+
+.countdown{
+  margin-top:55px;
+  display:block;
+  padding:28px;
+  border-radius:26px;
+  background:linear-gradient(135deg,#385674,#2b4562);
+  color:#fff;
+  text-align:center;
+  box-shadow:0 15px 35px #29415e2e;
+}
+.countdown small{letter-spacing:.2em;opacity:.75}
+.countdown h2{margin:8px 0 4px;font-size:28px}
+.countdown p{margin:0;opacity:.8}
+.countdown .count-button{
+  display:inline-block;margin-top:18px;
+  padding:13px 22px;background:#fff;color:#304963;
+  border-radius:14px;font-weight:900;
+}
+
+footer{
+  background:#405875;color:#fff;text-align:center;
+  padding:30px 20px;font-size:12px;opacity:.95;
+}
+
+/* ホームへ戻るボタン */
+.home-float{
+  position:fixed;right:14px;bottom:14px;z-index:2000;
+}
+.home-float a{
+  display:flex;align-items:center;gap:6px;
+  padding:11px 15px;border-radius:999px;
+  background:#fff;color:#304963;
+  border:3px solid #405875;
+  box-shadow:0 8px 25px #172b4450;
+  font-weight:1000;font-size:13px;
+}
+.home-float .x{font-size:20px;line-height:1}
+
+@media(max-width:700px){
+  .header-note{display:none}
+  .hero{padding-top:100px}
+  .hero-copy{font-size:14px}
+  .cards,.community-grid{grid-template-columns:1fr}
+  .card p{min-height:0}
+  .community-card{padding:20px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">受験情報ポータル</div>
+    <div class="header-note">EXAM INFORMATION</div>
+  </div>
+</header>
+
+<!-- どのページにいてもホームへ戻るためのボタン -->
+<div class="home-float">
+  <a href="#top" title="ホームへ戻る"><span class="x">×</span> ホーム</a>
+</div>
+
+<main id="top">
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">EXAM INFORMATION PORTAL</div>
+    <h1>
+      <span class="line">受験に役立つ情報を、</span>
+      <span class="line">ここから。</span>
+    </h1>
+    <p class="hero-copy">
+      勉強法や受験に役立つコラムと、<br>
+      先輩たちのリアルな受験体験記をまとめています。
+    </p>
+
+    <div class="scroll-wrap">
+      <a class="scroll-cta" href="#contents" aria-label="下のコンテンツへスクロール">
+        <span class="scroll-main">👇👇 スクロールして‼️ 👇👇</span>
+        <span class="scroll-sub">↓ SCROLL TO EXPLORE ↓</span>
+        <span class="scroll-arrow">↓↓</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="contents" id="contents">
+<div class="contents-inner">
+
+  <div class="section-heading">
+    <div class="section-label">CONTENTS</div>
+    <h2>知りたい情報を、ここから。</h2>
+    <p>気になるページをタップして見てみてください。</p>
+  </div>
+
+  <div class="cards">
+
+    <article class="card">
+      <div class="card-icon">📝</div>
+      <h3>コラム</h3>
+      <p>勉強法や受験に関する情報をまとめています。受験勉強のヒントを探している人へ。</p>
+      <a class="card-button" href="https://green-radium-99e.notion.site/33f06cebba0180d19b5ec3e684bb0b3b" target="_blank" rel="noopener noreferrer">コラムを見る →</a>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🎓</div>
+      <h3>受験体験記</h3>
+      <p>先輩たちが実際に経験した受験について、リアルな体験記を読むことができます。</p>
+      <a class="card-button" href="https://green-radium-99e.notion.site/33106cebba018027965bf563a75de9f2?v=33106cebba0180a4b02f000c1fd9a126" target="_blank" rel="noopener noreferrer">受験体験記を見る →</a>
+    </article>
+
+  </div>
+
+  <section class="community">
+    <div class="community-title">
+      <div class="section-label">COMMUNITY</div>
+      <h2>勉強会・相談できる場所</h2>
+      <p>気軽に参加できるOpenChatをまとめています。</p>
+    </div>
+
+    <div class="community-grid">
+
+      <article class="community-card">
+        <div>💬</div>
+        <h3>中学生向け</h3>
+        <p>英語勉強・定期テスト・高校受験対策部屋</p>
+        <a class="chat-button" href="https://line.me/ti/g2/Zqa4jopexWSL6Bkc2N9iTiPZvtDVcZsRfaQd7g?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener noreferrer">オープンチャットへ →</a>
+      </article>
+
+      <article class="community-card">
+        <div>📚</div>
+        <h3>高校受験生</h3>
+        <p>高校受験生勉強会.ᐟ.ᐟ.ᐟ</p>
+        <a class="chat-button" href="https://line.me/ti/g2/FO_lamKFGjpzilzUOkU4xCCPnGbRNbl558hpww?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener noreferrer">オープンチャットへ →</a>
+      </article>
+
+      <article class="community-card university">
+        <div>🎓</div>
+        <h3>大学受験</h3>
+        <p>高校生向けの大学受験勉強会です。</p>
+        <a class="chat-button" href="https://line.me/ti/g2/KQjlfiPYg9aO-o_MpQvlEABZ4gcoGq40KJU3rg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener noreferrer">オープンチャットへ →</a>
+      </article>
+
+    </div>
+  </section>
+
+  <a class="countdown" href="https://snowstudy.github.io/countdown/" target="_blank" rel="noopener noreferrer">
+    <small>COUNTDOWN</small>
+    <h2>入試本番までのカウントダウン</h2>
+    <p>残り時間をチェックして、今日の勉強を始めよう。</p>
+    <span class="count-button">カウントダウンを見る →</span>
+  </a>
+
+</div>
+</section>
+</main>
+
+<footer>© 2026 受験情報ポータル</footer>
+
+</body>
+</html>
