@@ -1,0 +1,240 @@
+<!-- file_name: index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学習応援ホームページ</title>
+    <style>
+        /* 全体の基本設定 */
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+
+        /* セクション共通の見出しスタイル */
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 30px 0 15px 0;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        /* ボタンの基本リセットと共通スタイル */
+        a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .btn {
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .btn-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .btn-sub {
+            font-size: 0.8rem;
+            color: #666666;
+        }
+
+        /* 1. 公式オープンチャットセクション */
+        .main-chat-area {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn-main-chat {
+            background-color: #ffe6eb; /* 薄ピンク色 */
+            padding: 20px;
+        }
+
+        .sub-hint {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555555;
+            margin: -5px 0 10px 0;
+            font-style: italic;
+        }
+
+        .u-heading {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #8b3a62;
+            margin: 15px 0 5px 0;
+            text-align: center;
+        }
+
+        .btn-univ-chat {
+            background-color: #f5e6e8; /* 薄ワインレッド色 */
+            padding: 18px;
+        }
+
+        /* 2. 2x2 四分割エリア (正方形) */
+        .grid-2x2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        /* 正方形を維持するためのコンテナ */
+        .square-box {
+            position: relative;
+            width: 100%;
+            padding-top: 100%; /* 高さを幅と同じにする (1:1) */
+        }
+
+        .square-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .btn-cream {
+            background-color: #fffdf0; /* 薄クリーム色 */
+        }
+
+        /* 雲のメッセージブロック */
+        .cloud-box {
+            border: 3px dashed #4a90e2; /* 青色の輪郭 */
+            background-color: #ffffff;
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; /* 雲っぽい丸み */
+        }
+
+        .cloud-text {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: #2c5aa0;
+            text-align: center;
+            line-height: 1.4;
+            padding: 0 10px;
+        }
+
+        /* 3. 教科特化型部屋セクション */
+        .grid-special {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .btn-math {
+            background-color: #fff0ed; /* 薄サーモンピンク色 */
+            padding: 15px 10px;
+        }
+
+        .btn-eng {
+            background-color: #fff5e6; /* 薄オレンジ色 */
+            padding: 15px 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- 1. 公式オープンチャット -->
+        <div class="section-title">👑 公式オープンチャット</div>
+        <div class="main-chat-area">
+            <a href="https://line.me" target="_blank" class="btn btn-main-chat">
+                <div class="btn-title">📢 高校受験生勉強会.ᐟ.ᐟ.ᐟ</div>
+                <div class="btn-sub">メインルームはこちら！</div>
+            </a>
+            <div class="sub-hint">「仲間がいるから大丈夫。息抜きも大切にね。」</div>
+
+            <div class="u-heading">👉 高校生の方はこちらも！</div>
+            <a href="https://line.me" target="_blank" class="btn btn-univ-chat">
+                <div class="btn-title">🎓 高校生勉強会.ᐟ.ᐟ.ᐟ【大学受験】</div>
+                <div class="btn-sub">次のステージへ、一緒に。</div>
+            </a>
+        </div>
+
+        <!-- 2. 四分割（正方形）エリア -->
+        <div class="grid-2x2">
+            <!-- コラム -->
+            <a href="https://notion.site" target="_blank" class="btn btn-cream square-box">
+                <div class="square-content">
+                    <div class="btn-title">📝 おすすめメニュー</div>
+                    <div class="btn-sub">お役立ちコラム</div>
+                </div>
+            </a>
+
+            <!-- 受験体験記 -->
+            <a href="https://notion.site" target="_blank" class="btn btn-cream square-box">
+                <div class="square-content">
+                    <div class="btn-title">📖 受験体験記</div>
+                    <div class="btn-sub">先輩たちの軌跡</div>
+                </div>
+            </a>
+
+            <!-- カウントダウン -->
+            <a href="https://github.io" target="_blank" class="btn btn-cream square-box">
+                <div class="square-content">
+                    <div class="btn-title">⏳ カウントダウン</div>
+                    <div class="btn-sub">入試まであと何日？</div>
+                </div>
+            </a>
+
+            <!-- 雲のメッセージブロック -->
+            <div class="square-box cloud-box">
+                <div class="square-content">
+                    <div class="cloud-text">☁️<br>一歩一歩<br>進んでいこう。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 教科特化型部屋 -->
+        <div class="section-title">🎯 苦手克服・得意を伸ばす!教科特化型部屋</div>
+        <div class="grid-special">
+            <!-- 数学 -->
+            <a href="https://line.me" target="_blank" class="btn btn-math">
+                <div class="btn-title">📐 数学専門部屋🎓</div>
+                <div class="btn-sub">一歩ずつ、解ける楽しさを。</div>
+            </a>
+
+            <!-- 英語 -->
+            <a href="https://line.me" target="_blank" class="btn btn-eng">
+                <div class="btn-title">🔤 英語対策部屋</div>
+                <div class="btn-sub">世界が広がる、言葉のチカラ。</div>
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>
